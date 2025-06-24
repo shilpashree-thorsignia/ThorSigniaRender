@@ -9,7 +9,6 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0 --port $PORT",
-    "vercel-build": "vite build",
     "start": "vite preview --host 0.0.0.0 --port $PORT"
   },
   "dependencies": {
