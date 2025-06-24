@@ -85,8 +85,10 @@ const socialIcons = {
 };
 
 // Add API URL configuration
+import { config } from '../config/env';
+
 const API_URL = process.env.NODE_ENV === 'production' 
-  ? 'https://www.thorsignia.in/api/contact'
+  ? `${config.apiUrl}/api/contact`
   : '/api/contact';
 
 // Rate limiting configuration
