@@ -1,9 +1,8 @@
 services:
-  # Backend API Service
   - type: web
     name: thorsignia-api
     runtime: python
-    rootDir: ./backend
+    rootDir: ./
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn main:app
     plan: free
@@ -17,19 +16,4 @@ services:
         value: thor-signia-super-secret-production-key-2025
       - key: PORT
         value: 10000
-    healthCheckPath: /api/health
-
-  # Frontend Service
-  - type: web
-    name: thorsignia-frontend
-    runtime: node
-    rootDir: ./frontend
-    buildCommand: npm ci && npm run build
-    startCommand: npm run preview
-    plan: free
-    autoDeploy: false
-    envVars:
-      - key: NODE_ENV
-        value: production
-      - key: VITE_API_BASE_URL
-        value: https://thorsignia.onrender.com 
+    healthCheckPath: /api/health 

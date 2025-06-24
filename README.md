@@ -1,113 +1,133 @@
-# Thor Signia
+# ThorSignia - Full Stack Application
 
-Thor Signia is a modern web application built with React and Flask, offering intelligent voice, chat, and campaign automation solutions.
+This repository contains the complete ThorSignia application with separated frontend and backend components.
 
-## Features
+## Repository Structure
 
-- Contact Form with reCAPTCHA integration
-- MySQL database integration
-- RESTful API endpoints
-- Modern UI with responsive design
-- Security features including rate limiting and input sanitization
+```
+ThorSignia/
+├── frontend/          # React + Vite frontend application
+│   ├── src/          # Source code
+│   ├── public/       # Static assets
+│   ├── package.json  # Frontend dependencies
+│   └── render.yaml   # Frontend deployment config
+├── backend/          # Flask backend API
+│   ├── app/          # Flask application
+│   ├── api/          # API routes
+│   ├── main.py       # Application entry point
+│   ├── requirements.txt # Python dependencies
+│   └── render.yaml   # Backend deployment config
+└── render.yaml       # Root deployment config (both services)
+```
 
-## Tech Stack
+## Technology Stack
 
 ### Frontend
-- React
-- TypeScript
-- Vite
-- Tailwind CSS
-- Framer Motion
-- Shadcn/ui components
+- **Framework**: React 18 with TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **UI Components**: Radix UI, Framer Motion
+- **Deployment**: Render (Static Site)
 
 ### Backend
-- Flask
-- SQLAlchemy
-- PyMySQL
-- Flask-CORS
+- **Framework**: Flask with Python 3
+- **Database**: Railway MySQL
+- **ORM**: SQLAlchemy
+- **Server**: Gunicorn
+- **Deployment**: Render (Web Service)
 
-## Getting Started
+## Local Development
 
 ### Prerequisites
-- Node.js (v14 or higher)
-- Python (v3.8 or higher)
-- MySQL
+- Node.js 18+ (for frontend)
+- Python 3.8+ (for backend)
+- MySQL database (or use the Railway connection)
 
-### Installation
-
-1. Clone the repository
+### Frontend Setup
 ```bash
-git clone https://github.com/yourusername/thor-signia.git
-cd thor-signia
-```
-
-2. Install frontend dependencies
-```bash
+cd frontend
 npm install
-```
-
-3. Set up Python virtual environment and install backend dependencies
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: .\venv\Scripts\activate
-pip install -r requirements.txt
-```
-
-4. Create .env file in the root directory with the following variables:
-```env
-FLASK_ENV=development
-SECRET_KEY=your_secret_key
-MYSQL_USER=your_mysql_user
-MYSQL_PASSWORD=your_mysql_password
-MYSQL_HOST=your_mysql_host
-MYSQL_PORT=your_mysql_port
-MYSQL_DB=your_mysql_database
-RECAPTCHA_SITE_KEY=your_recaptcha_site_key
-RECAPTCHA_SECRET_KEY=your_recaptcha_secret_key
-```
-
-### Running the Application
-
-1. Start the frontend development server:
-```bash
 npm run dev
 ```
+The frontend will run on `http://localhost:5173`
 
-2. Start the Flask backend server:
+### Backend Setup
 ```bash
-python app.py
+cd backend
+pip install -r requirements.txt
+python main.py
+```
+The backend will run on `http://localhost:5000`
+
+### Environment Variables
+
+#### Frontend (.env in frontend/)
+```
+VITE_API_BASE_URL=http://localhost:5000  # For local development
 ```
 
-The application will be available at:
-- Frontend: http://localhost:3000
-- Backend API: http://localhost:5000
-
-## API Endpoints
-
-### Contact Form
-- `POST /api/contact` - Submit contact form
-- `GET /api/contact` - Get all contacts (development only)
-- `GET /api/contact/:id` - Get specific contact (development only)
-
-### Health Check
-- `GET /api/health` - API health check endpoint
+#### Backend (.env in backend/)
+```
+FLASK_ENV=development
+DATABASE_URL=mysql://root:ydomXWGBWcamiOWQHqyXdJZKTXPPXexc@centerbeam.proxy.rlwy.net:29126/railway
+SECRET_KEY=your-secret-key
+PORT=5000
+```
 
 ## Deployment
 
-The application is configured for deployment on Vercel (frontend) and can be deployed to any Python hosting service for the backend.
+### Render Deployment
+
+The application is configured for deployment on Render with both services:
+
+1. **Backend API**: `https://thorsignia.onrender.com`
+2. **Frontend**: To be deployed separately
+
+#### Deploy Both Services (Recommended)
+Use the root `render.yaml` to deploy both services from a single repository:
+```bash
+# Connect repository to Render and it will deploy both services
+```
+
+#### Deploy Separately
+- Backend: Use `backend/render.yaml`
+- Frontend: Use `frontend/render.yaml`
+
+### Database Configuration
+
+Currently using Railway MySQL:
+- **Host**: centerbeam.proxy.rlwy.net:29126
+- **Database**: railway
+- **Connection**: Already configured in environment variables
+
+## API Endpoints
+
+### Health Check
+- `GET /api/health` - API health status
+
+### Contact Form
+- `POST /api/contact` - Submit contact form
+
+### Career Applications
+- `POST /api/careers` - Submit career application
+
+## Features
+
+- Responsive design with modern UI
+- AI-powered service showcases
+- Interactive animations and effects
+- Contact and career application forms
+- Case studies and testimonials
+- Service pages with detailed information
 
 ## Contributing
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+2. Create a feature branch
+3. Make your changes in the appropriate frontend/ or backend/ directory
+4. Test locally
+5. Submit a pull request
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Contact
-
-Thor Signia - info@thorsignia.online
+Copyright © 2025 ThorSignia. All rights reserved.

@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: thorsignia-frontend
+    runtime: node
+    rootDir: ./
+    buildCommand: npm ci && npm run build
+    startCommand: npm run preview
+    plan: free
+    autoDeploy: false
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: VITE_API_BASE_URL
+        value: https://thorsignia.onrender.com 
