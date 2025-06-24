@@ -5,7 +5,7 @@ import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button";
 import { Award, Trophy, Star, Calendar, ArrowRight, CheckCircle } from "lucide-react";
 import { Link as RouterLink, useLocation } from 'react-router-dom';
-import { cn } from "../lib";
+import { cn } from "@/lib/utils";
 
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';

@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Trophy, Star, Calendar, CheckCircle } from "lucide-react";
 import { usePathname } from 'next/navigation';
-import { cn } from "../lib";
+import { cn } from "@/lib/utils";
 import { motion, useAnimation } from 'framer-motion'; // AnimatePresence removed
 import { useInView } from 'react-intersection-observer';
 // --- Animation Variants ---

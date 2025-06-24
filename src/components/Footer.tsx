@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { Mail, Phone, MessageCircle, Globe } from 'lucide-react';
 // Import the logo from assets folder - Ensure this path is correct relative to Footer.jsx
 // const logoImage = '../assets/images/thor-signia-logo.png'; // This import is not used, the img src uses a public path.
-import { cn } from "../lib"; // Assuming you have a utility for conditional classes
+import { cn } from "@/lib/utils"; // Assuming you have a utility for conditional classes
 
 // Define social media icons with standard SVG paths and styling
 const socialIcons = {
