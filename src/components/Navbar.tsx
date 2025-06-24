@@ -3,7 +3,7 @@
 // import logoImage from "../assets/images/thor-signia-logo.png"; // Assuming logo is in public folder
 import React, { useState, useRef, useEffect } from "react";
 import { Link as RouterLink, useLocation } from "react-router-dom";
-import { cn } from "@/lib/utils";
+import { cn } from "../lib/utils";
 import { Button } from "@/components/ui/button";
 
 import {

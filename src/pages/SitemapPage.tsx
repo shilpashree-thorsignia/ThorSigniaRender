@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { Link as RouterLink } from "react-router-dom"; // Assuming you are using react-router-dom
-import { cn } from "@/lib/utils"; // Your utility function for conditional classes
+import { cn } from "../lib/utils"; // Your utility function for conditional classes
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
