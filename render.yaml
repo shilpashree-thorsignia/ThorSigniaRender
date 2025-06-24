@@ -4,7 +4,7 @@ services:
     name: thorsignia-api
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app
+    startCommand: gunicorn main:app
     plan: free
     branch: main
     healthCheckPath: /api/health
@@ -14,4 +14,18 @@ services:
       - key: PORT
         value: 10000
       - key: DATABASE_URL
-        value: mysql://root:ydomXWGBWcamiOWQHqyXdJZKTXPPXexc@centerbeam.proxy.rlwy.net:29126/railway 
+        value: mysql://root:ydomXWGBWcamiOWQHqyXdJZKTXPPXexc@centerbeam.proxy.rlwy.net:29126/railway
+
+  # Frontend Web Service
+  - type: web
+    name: thorsignia-frontend
+    runtime: node
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    plan: free
+    branch: main
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: VITE_API_BASE_URL
+        value: https://thorsignia.onrender.com 
