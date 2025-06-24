@@ -20,7 +20,7 @@ services:
   - type: web
     name: thorsignia-frontend
     runtime: node
-    rootDir: .
+    rootDir: ./
     buildCommand: npm install && npm run build
     startCommand: npm run start
     plan: free
