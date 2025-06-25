@@ -34,7 +34,12 @@ export default defineConfig({
   preview: {
     host: '0.0.0.0',
     port: 10000,
-    allowedHosts: ['thorsignia.onrender.com']
+    allowedHosts: [
+      'thorsignia.onrender.com',
+      'thorsignia-pvs7.onrender.com',
+      'thorsignia-frontend.onrender.com',
+      '.onrender.com'  // Allow all Render subdomains
+    ]
   },
   build: {
     assetsInlineLimit: 0,

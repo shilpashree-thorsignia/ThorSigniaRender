@@ -1,4 +1,4 @@
 // Environment configuration
 export const config = {
-  apiUrl: (import.meta.env as any).VITE_API_BASE_URL || (import.meta.env as any).VITE_API_URL || 'https://thorsignia-api.onrender.com'
+  apiUrl: (import.meta.env as any).VITE_API_BASE_URL || (import.meta.env as any).VITE_API_URL || 'https://thorsignia-api-gmud.onrender.com'
 }; 
