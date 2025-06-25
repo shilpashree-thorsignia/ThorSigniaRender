@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { cn } from "../../lib";
+import { cn } from "@/lib/utils";
 
 // Linear interpolation helper function
 function lerp(start: number, end: number, amt: number): number {
