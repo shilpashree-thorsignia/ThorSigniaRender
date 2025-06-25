@@ -43,7 +43,9 @@ ALLOWED_ORIGINS = [
     'http://127.0.0.1:5000',
     'http://localhost:3000',
     'http://127.0.0.1:3000',
-    'https://www.thorsignia.in'
+    'https://www.thorsignia.in',
+    'https://thorsignia-api.onrender.com',
+    'https://thorsignia.onrender.com'
 ]
 
 
@@ -51,7 +53,8 @@ def get_allowed_origin(request):
     origin = request.headers.get('Origin')
     if origin in ALLOWED_ORIGINS:
         return origin
-    return ALLOWED_ORIGINS[0]
+    # Return '*' for unmatched origins instead of localhost
+    return '*'
 
 # Simple in-memory rate limiting store
 ip_request_count = {}
