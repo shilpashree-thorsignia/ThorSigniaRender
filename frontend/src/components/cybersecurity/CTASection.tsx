@@ -22,7 +22,7 @@ const CTASection: React.FC = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'}/api/assessments`, {
+              const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'https://thorsignia-api.onrender.com'}/api/assessments`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)

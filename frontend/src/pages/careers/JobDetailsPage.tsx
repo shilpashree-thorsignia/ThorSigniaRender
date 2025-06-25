@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react'; // Import back arrow icon
 import { jobListings, JobListing } from '@/data/jobListings'; // Import data and type
+import { config } from '@/config/env'; // Import API configuration
 
 const JobDetailsPage = () => {
   useEffect(() => {
@@ -116,7 +117,7 @@ const JobDetailsPage = () => {
     // --- Replace this simulated section with your actual fetch call ---
     // Example Fetch call (assuming your API is at /api/careers/apply)
      try {
-       const response = await fetch('/api/careers/apply', {
+       const response = await fetch(`${config.apiUrl}/api/careers/apply`, {
          method: 'POST',
          body: formData
        });

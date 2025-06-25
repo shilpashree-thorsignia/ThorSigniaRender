@@ -87,9 +87,7 @@ const socialIcons = {
 // Add API URL configuration
 import { config } from '../config/env';
 
-const API_URL = process.env.NODE_ENV === 'production' 
-  ? `${config.apiUrl}/api/contact`
-  : '/api/contact';
+const API_URL = `${config.apiUrl}/api/contact`;
 
 // Rate limiting configuration
 const RATE_LIMIT = {
@@ -207,10 +205,10 @@ const getTimeUntilReset = () => {
 };
 
 // Rate limit warning component
-const RateLimitWarning = ({ remaining, timeUntilReset }) => {
+const RateLimitWarning = ({ remaining, timeUntilReset }: { remaining: number; timeUntilReset: number }) => {
   if (remaining > 5) return null;
   
-  const formatTime = (ms) => {
+  const formatTime = (ms: number) => {
     const minutes = Math.ceil(ms / (1000 * 60));
     return minutes > 60 ? `${Math.ceil(minutes / 60)} hour(s)` : `${minutes} minute(s)`;
   };
@@ -483,7 +481,7 @@ const ContactPage = () => {
           {/* Gradient overlay */}
           <div className="absolute inset-0 bg-[#171E2E] opacity-70 z-0" />
           <div className="max-w-2xl mx-auto text-center z-20 relative">
-            <h1 className="text-3xl md::text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
               <span className="text-white"> Get in </span>
               <span className="text-[#88BF42]">Touch</span>
             </h1>
