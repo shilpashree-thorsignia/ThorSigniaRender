@@ -4,7 +4,7 @@ import requests
 api_bp = Blueprint('api', __name__)
 
 from app import create_app, db
-# from app.models.contact_model import Contact
+from app.models.contact import Contact
 from api.assessment import Assessment
 import re
 import logging

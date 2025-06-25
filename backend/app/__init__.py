@@ -6,6 +6,7 @@ import os
 import logging
 import urllib.parse
 import pymysql
+import time
 
 # Register PyMySQL as the MySQL driver
 pymysql.install_as_MySQLdb()
@@ -47,8 +48,9 @@ def create_app():
                 "https://thorsignia-api.onrender.com",
                 "https://thorsignia-frontend.onrender.com"
             ],
-            "methods": ["GET", "POST", "OPTIONS"],
-            "allow_headers": ["Content-Type", "Authorization"]
+            "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+            "allow_headers": ["Content-Type", "Authorization", "X-Requested-With"],
+            "supports_credentials": True
         }
     })
 
@@ -176,10 +178,24 @@ def create_app():
         from api.index import api_bp
         app.register_blueprint(api_bp)
         
-        # Add a basic API health check route
+        # Add a comprehensive API health check route
         @app.route('/api/health')
         def health_check():
-            return {'status': 'ok', 'message': 'Thor Signia API is running'}
+            try:
+                # Test database connection
+                db.engine.connect()
+                db_status = 'connected'
+            except Exception as e:
+                logger.error(f"Database health check failed: {str(e)}")
+                db_status = 'disconnected'
+            
+            return {
+                'status': 'ok' if db_status == 'connected' else 'warning',
+                'message': 'Thor Signia API is running',
+                'database': db_status,
+                'environment': os.getenv('FLASK_ENV', 'development'),
+                'timestamp': time.time()
+            }
         
         # Serve frontend in production
         @app.route('/')
