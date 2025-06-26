@@ -256,9 +256,13 @@ def create_assessment():
             company=sanitized_data['company'],
             message=sanitized_data['message']
         )
-        db.session.add(new_assessment)
-        db.session.commit()
-
+        try:
+            db.session.add(new_assessment)
+            db.session.commit()
+        except Exception as db_error:
+            logger.error(f"Database error: {str(db_error)}")
+            db.session.rollback()
+            raise
         # Optional: Send email notification for new assessment request
         assessment_data = {
             'name': sanitized_data['name'],
@@ -275,7 +279,6 @@ def create_assessment():
                 email_sent = email_result.get('success', False)
             except Exception:
                 logger.warning("Failed to send assessment notification email")
-
         response = jsonify({
             'id': new_assessment.id,
             'message': 'Assessment request saved successfully',

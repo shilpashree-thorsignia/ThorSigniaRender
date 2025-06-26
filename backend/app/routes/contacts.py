@@ -87,6 +87,7 @@ def create_contact():
         # Get form data
         data = request.get_json()
         logger.info(f"Received contact form data: {data}")
+        logger.info(f"Database URI: {current_app.config['SQLALCHEMY_DATABASE_URI']}")
         
         if not data:
             return jsonify({"error": "Invalid JSON data"}), 400
@@ -127,6 +128,8 @@ def create_contact():
             db.session.add(new_contact)
             db.session.commit()
             logger.info(f"Successfully saved contact with ID: {new_contact.id}")
+            total_contacts = Contact.query.count()
+            logger.info(f"Total contacts in database: {total_contacts}")
             
             # Create response
             response = jsonify({
