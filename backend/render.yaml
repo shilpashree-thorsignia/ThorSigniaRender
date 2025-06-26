@@ -11,7 +11,7 @@ services:
       - key: FLASK_ENV
         value: production
       - key: DATABASE_URL
-        value: mysql://root:ydomXWGBWcamiOWQHqyXdJZKTXPPXexc@centerbeam.proxy.rlwy.net:29126/railway
+        value: postgresql://thorsigniadb_user:AuygrePnhOwNRxvrN20Z9GsdlOiXTnMe@dpg-d1ec9u3e5dus73b8k03g-a.singapore-postgres.render.com/thorsigniadb
       - key: SECRET_KEY
         value: thor-signia-super-secret-production-key-2025
       - key: PORT

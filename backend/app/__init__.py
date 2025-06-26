@@ -157,7 +157,7 @@ def create_app():
                 # Test the connection
                 try:
                     db.engine.connect()
-                    logger.info("Successfully connected to MySQL database!")
+                    logger.info("Successfully connected to the database!")
                 except Exception as e:
                     logger.error(f"Database connection error: {str(e)}")
                     raise
@@ -209,4 +209,18 @@ def create_app():
             except:
                 return app.send_static_file('index.html')
                 
+        @app.route('/api/init-db', methods=['POST'])
+        def init_db():
+            try:
+                from app.models.contact import Contact
+                from app.models.career_application import CareerApplication
+                db.create_all()
+                inspector = db.inspect(db.engine)
+                tables = inspector.get_table_names()
+                logger.info(f"/api/init-db: Tables now in database: {tables}")
+                return {'status': 'ok', 'tables': tables}, 200
+            except Exception as e:
+                logger.error(f"/api/init-db error: {str(e)}")
+                return {'status': 'error', 'message': str(e)}, 500
+        
         return app 
